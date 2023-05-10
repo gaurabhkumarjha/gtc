@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gst Tax Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+
+            background: linear-gradient(to right, #870000, #190a05);
+        }
+
+        .taxvalue {
+
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 303px;
+            padding: 4px 10px;
+        }
+
+        .taxslave {
+            font-size: 17px;
+            padding: 4px 10px;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-top: auto;
+            margin-top: 17px;
+            width: 284px;
+
+        }
+
+        .taxtype {
+            padding: 5px 6px;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 223px;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        .jumbotron {
+            width: 800px;
+            display: none;
+            margin-left: 359px;
+            margin-top: 50px;
+            height: 500px;
+        }
+
+        .display-4 {
+            display: flex;
+            justify-content: center;
+            margin-top: -45px;
+        }
+
+        #taxableamount {
+            display: flex;
+            justify-content: center;
+            margin-top: 49px;
+            margin-left: -206px;
+        }
+
+        #cgst {
+            display: flex;
+            justify-content: center;
+            margin-top: 49px;
+            margin-left: -206px;
+        }
+
+        #sgst {
+            display: flex;
+            justify-content: center;
+            margin-top: 49px;
+            margin-left: -206px;
+        }
+
+        #igst {
+            display: flex;
+            justify-content: center;
+            margin-top: 49px;
+            margin-left: -206px;
+        }
+
+        #exitbtn {
+            float: right;
+            border-radius: 23px;
+            margin-top: 18px;
+            font-size: small;
+        }
+
+        .card-body {
+            box-shadow: rgba(207, 243, 3, 0.918) 0px 22px 70px 4px;
+        }
+
+        @media screen and (max-width: 575.98px) {
+            h1 {
+                font-size: small;
+            }
+
+            .jumbotron {
+                margin-left: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-right: auto;
+            }
+
+            .display-4 {
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #taxableamount {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #cgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #igst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #sgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #exitbtn {
+                float: left;
+                margin: auto;
+                margin-top: 10px;
+            }
+        }
+
+        /* // Small devices (landscape phones, 576px and up) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            h1 {
+                font-size: small;
+            }
+
+            .jumbotron {
+                margin-left: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-right: auto;
+            }
+
+            .display-4 {
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #taxableamount {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #cgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #igst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #sgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #exitbtn {
+                float: left;
+                margin: auto;
+                margin-top: 10px;
+            }
+
+        }
+
+        /* // Medium devices (tablets, 768px and up) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+            h1 {
+                font-size: small;
+            }
+
+
+            .jumbotron {
+                margin-left: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-right: auto;
+            }
+
+            .display-4 {
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #taxableamount {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #cgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #igst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #sgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #exitbtn {
+                float: left;
+                margin: auto;
+                margin-top: 10px;
+            }
+        }
+
+        /* // Large devices (desktops, 992px and up) */
+        @media (min-width: 992px) and (max-width: 1199.98px) {
+
+            h1 {
+                font-size: small;
+            }
+
+
+            .jumbotron {
+                margin-left: auto;
+                margin-top: auto;
+                margin-bottom: auto;
+                margin-right: auto;
+            }
+
+            .display-4 {
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #taxableamount {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #cgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #igst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #sgst {
+
+                margin: auto;
+                margin-left: -425px;
+            }
+
+            #exitbtn {
+                float: left;
+                margin: auto;
+                margin-top: 10px;
+            }
+        }
+
+        /* // Extra large devices (large desktops, 1200px and up) */
+        /* @media (min-width: 1200px) {}*/
+
+        .site-footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .site-footer {
+            background-color: #26272b;
+            padding: 45px 0 20px;
+            font-size: 15px;
+            line-height: 24px;
+            color: #737373;
+        }
+
+        .site-footer hr {
+            border-top-color: #bbb;
+            opacity: 0.5
+        }
+
+        .site-footer hr.small {
+            margin: 20px 0
+        }
+
+        .site-footer h6 {
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            letter-spacing: 2px
+        }
+
+        .site-footer a {
+            color: #737373;
+        }
+
+        .site-footer a:hover {
+            color: #3366cc;
+            text-decoration: none;
+        }
+
+        .footer-links {
+            padding-left: 0;
+            list-style: none
+        }
+
+        .footer-links li {
+            display: block
+        }
+
+        .footer-links a {
+            color: #737373
+        }
+
+        .footer-links a:active,
+        .footer-links a:focus,
+        .footer-links a:hover {
+            color: #3366cc;
+            text-decoration: none;
+        }
+
+        .footer-links.inline li {
+            display: inline-block
+        }
+
+        .site-footer .social-icons {
+            text-align: right
+        }
+
+        .site-footer .social-icons a {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            margin-left: 6px;
+            margin-right: 0;
+            border-radius: 100%;
+            background-color: #33353d
+        }
+
+        .copyright-text {
+            margin: 0
+        }
+
+        @media (max-width: 768px) {
+
+            .site-footer {
+                position: unset;
+            }
+
+            .footeremail {
+                width: 250px;
+            }
+        }
+
+        .mr {
+            margin-left: 3px;
+        }
+
+        .mycompany {
+
+            display: flex;
+            flex-direction: column;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="common">
+        <h1
+            style="display: flex;justify-content: center; color: white;margin-top: 20px;margin-left: 10px;margin-right: 10px;">
+            GST TAX CALCULATOR</h1>
+
+        <form style="display: flex;justify-content: center; margin: auto;">
+
+            <div class="form-group">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <input type="text" class="taxvalue" id="number" placeholder="PLEASE ENTER GST INCLUDED VALUE">
+                        <div class="form-group">
+                            <input type="text" class="taxslave" id="exampleFormControlSelect1"
+                                placeholder="TYPE TAX SLAB">
+                        </div>
+                        <div class="form-group">
+                            <select class="taxtype" id="dropdownmenu">
+                                <option>TAX TYPE</option>
+                                <option>IGST</option>
+                                <option>CGST & SGST</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-warning" id="showbtn">Calculate</button>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+    </div>
+
+    <div class="jumbotron" id="outputconsole">
+
+        <h1 class="display-4">Bill View</h1>
+        <p class="lead" id="taxableamount"> </p>
+        <p class="lead" id="cgst">
+        </p>
+        <p class="lead" id="sgst">
+        </p>
+        <p class="lead" id="igst">
+        </p>
+        <p class="lead">
+            <a class="btn btn-danger btn-lg" id="exitbtn" type="button">Exit Bill View</a>
+        </p>
+    </div>
+
+
+
+    <footer class="site-footer" id="sitefoter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <h6>About</h6>
+                    <p class="text-justify">This website is calculate a GST included value and gives NON GST value. Our website give a Bill View to shopkeepers for creating a accurate bill.
+                        It support 1% to 40% Tax slab and all types of taxes like(CGST, SGST, IGST). 
+                    </p>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <h6>Our Other(s) Website</h6>
+                    <ul class="footer-links">
+                        <li><a href="https://sunilkumarjha.netlify.app/" target="-blank">CA Service</a></li>
+                        <li><a href="https://onlinecloudstore.netlify.app/" target="-blank">Cloud Store</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <h6>Subscribe</h6>
+                    <ul class="footer-links">
+                        <form className="cont" action="https://formspree.io/f/meqdyvjn" method="POST">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control footeremail" id="floatingInput"
+                                    placeholder="name@example.com" name="UserEmail" required autoComplete="off" />
+                                <label for="floatingInput"></label>
+                                <button type="submit" class="btn btn-success mb-1" style="float: left; margin-top: 5px;">
+                                    <ForwardToInboxIcon /> Send
+                                </button>
+                            </div>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2023 All Rights Reserved by
+                        <a href="/">G.T.C</a>
+                    <p className='mycompany'>~Devloped by Rhombus</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <script src="app.js">   
+    </script>
+</body>
+
+</html>
